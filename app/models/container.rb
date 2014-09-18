@@ -2,8 +2,12 @@ class Container
 
   attr_accessor :index
 
-  def self.all
+  def self.by_status
     [3,6,2,5,1,4].map { |x| new(x) }
+  end
+
+  def self.by_name
+    [1,2,3,4,5,6].map { |x| new(x) }
   end
 
   def initialize(index)

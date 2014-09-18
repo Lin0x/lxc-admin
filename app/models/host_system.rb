@@ -1,4 +1,4 @@
-module System
+module HostSystem
   extend self
 
   def hostname
@@ -6,7 +6,7 @@ module System
   end
 
   def ip_address
-    Socket.ip_address_list.detect { |iface| iface.ipv4_private? }.try(:ip_address)
+    Socket.ip_address_list.detect(&:ipv4_private?).try(:ip_address)
   end
 
   def os
