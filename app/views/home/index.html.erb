@@ -1,0 +1,60 @@
+<h2 class="sub-header">Host-System</h2>
+
+<div class="jumbotron">
+  <div class="row">
+    <div class="col-md-4">
+      <p><strong>Hostname</strong></p>
+      <p><%= System.hostname %></p>
+    </div>
+    <div class="col-md-4">
+      <p><strong>IP-Address</strong></p>
+      <p><%= System.ip_address %></p>
+    </div>
+    <div class="col-md-4">
+      <p><strong>OS</strong></p>
+      <p><%= System.os %></p>
+    </div>
+  </div>
+</div>
+
+<h2 class="sub-header">Containers</h2>
+
+<table class="table table-striped">
+  <tr>
+    <th>Status</th>
+    <th>Name</th>
+    <th>Hostname</th>
+    <th>IP Address</th>
+    <th>Memory usage</th>
+    <th>Actions</th>
+  </tr>
+  <% Container.all.each do |container| %>
+    <%= container_row container do %>
+      <td>
+        <%= state_label container %>
+      </td>
+      <td>
+        <%= link_to container.name, '' %>
+      </td>
+      <td>
+        <%= container.hostname %>
+      </td>
+      <td>
+        <%= container.ip_address %>
+      </td>
+      <td>
+        <span class="label label-default">
+          <%= container.memory_usage %>
+        </span>
+      </td>
+      <td>
+        <div class="btn-group">
+          <button type="button" disabled="disabled" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-play"></span> Start</button>
+          <button type="button" disabled="disabled" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-stop"></span> Stop</button>
+          <button type="button" disabled="disabled" class="btn btn-xs btn-default"><span class="glyphicon glyphicon-pause"></span> Freeze</button>
+          <button type="button" disabled="disabled" class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+        </div>
+      </td>
+    <% end %>
+  <% end %>
+</table>
