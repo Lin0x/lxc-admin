@@ -1,37 +1,36 @@
 class Container
+  include ActiveModel::Model
 
-  attr_accessor :index
+  attr_accessor :name, :state, :ip_addresses
 
   def self.by_status
-    [3,6,2,5,1,4].map { |x| new(x) }
+    container_list.sort_by(&:state)
   end
 
   def self.by_name
-    [1,2,3,4,5,6].map { |x| new(x) }
-  end
-
-  def initialize(index)
-    self.index = index
-  end
-
-  def state
-    [:running, :stopped, :frozen][index % 3]
-  end
-
-  def name
-    "server#{index}"
+    container_list.sort_by(&:name)
   end
 
   def hostname
-    "server#{index}"
-  end
-
-  def ip_address
-    "10.11.12.#{index}"
+    "todo"
   end
 
   def memory_usage
-    "#{index * 100} MB"
+    "todo"
+  end
+
+  private
+
+  def self.container_list
+    LXC.list_containers.map { |name| new_from_lxc(LXC::Container.new(name)) }
+  end
+
+  def self.new_from_lxc(container)
+    new({
+      name: container.name,
+      state: container.state,
+      ip_addresses: container.ip_addresses.any? ? container.ip_addresses.join("\n") : "-"
+    })
   end
 
 end
