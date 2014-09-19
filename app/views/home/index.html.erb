@@ -28,7 +28,7 @@
     <th>Memory usage</th>
     <th>Actions</th>
   </tr>
-  <% Container.by_status.each do |container| %>
+  <% Container.by_state.each do |container| %>
     <%= container_row container do %>
       <td>
         <%= state_label container %>

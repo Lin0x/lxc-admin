@@ -19,6 +19,7 @@ end
 
 group :development, :test do
   gem 'byebug'
+  gem 'rspec-rails', '~> 3.0.0'
 end
 
-gem 'ruby-lxc', github: 'lxc/ruby-lxc', require: 'lxc'
+gem 'ruby-lxc', github: 'lxc/ruby-lxc', require: 'lxc' unless RUBY_PLATFORM =~ /darwin|win32/

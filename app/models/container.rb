@@ -3,8 +3,12 @@ class Container
 
   attr_accessor :name, :state, :ip_addresses
 
-  def self.by_status
-    container_list.sort_by(&:state)
+  def self.all
+    container_list
+  end
+
+  def self.by_state
+    container_list.sort_by { |item| [item.state, item.name] }
   end
 
   def self.by_name
