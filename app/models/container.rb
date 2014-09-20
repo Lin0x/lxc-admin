@@ -15,12 +15,40 @@ class Container
     container_list.sort_by(&:name)
   end
 
+  def self.find(name)
+    new_from_lxc(LXC::Container.new(name))
+  end
+
+  def id
+    name
+  end
+
   def hostname
     "todo"
   end
 
   def memory_usage
     "todo"
+  end
+
+  def start
+    # TODO
+  end
+
+  def stop
+    # TODO
+  end
+
+  def freeze
+    # TODO
+  end
+
+  def unfreeze
+    # TODO
+  end
+
+  def delete
+    # TODO
   end
 
   private

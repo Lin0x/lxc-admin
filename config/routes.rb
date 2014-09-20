@@ -2,4 +2,11 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
 
+  patch 'containers/:id/start',    to: 'containers#start',    as: :start_container
+  patch 'containers/:id/stop',     to: 'containers#stop',     as: :stop_container
+  patch 'containers/:id/freeze',   to: 'containers#freeze',   as: :freeze_container
+  patch 'containers/:id/unfreeze', to: 'containers#unfreeze', as: :unfreeze_container
+
+  delete 'containers/:id', to: 'containers#delete', as: :delete_container
+
 end
