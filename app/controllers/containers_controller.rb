@@ -1,5 +1,9 @@
 class ContainersController < ApplicationController
 
+  def new
+    @container = Container.new
+  end
+
   def start
     ContainerStateChangeJob.perform_later container, 'start'
     redirect_to root_path, notice: 'The container has been started'

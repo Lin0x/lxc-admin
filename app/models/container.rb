@@ -2,7 +2,7 @@ class Container
   include ActiveModel::Model
   include GlobalID::Identification
 
-  attr_accessor :id, :name, :state, :ip_addresses
+  attr_accessor :id, :name, :template, :autostart, :rootfs, :net_type, :net_hwaddr, :state, :ip_addresses
 
   delegate :start, :stop, :freeze, :unfreeze, :destroy, to: :lxc_container
 
@@ -41,6 +41,12 @@ class Container
       })
     end
 
+  end
+
+  def initialize(*args)
+    super
+    @name   ||= 'foo'
+    @rootfs ||= '/var/lib/lxc/foo/rootfs'
   end
 
   def pid

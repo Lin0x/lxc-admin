@@ -1,0 +1,10 @@
+<%= simple_form_for @container do |f| %>
+
+  <%= f.input :name %>
+  <%= f.input :template %>
+  <%= f.input :rootfs %>
+  <%= f.input :autostart, as: :boolean %>
+
+  <%= f.submit class: 'btn btn-primary' %>
+
+<% end %>
