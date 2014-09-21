@@ -1,7 +1,8 @@
 class Container
   include ActiveModel::Model
+  include GlobalID::Identification
 
-  attr_accessor :name, :state, :ip_addresses
+  attr_accessor :id, :name, :state, :ip_addresses
 
   def self.all
     container_list
@@ -15,12 +16,8 @@ class Container
     container_list.sort_by(&:name)
   end
 
-  def self.find(name)
-    new_from_lxc(LXC::Container.new(name))
-  end
-
-  def id
-    name
+  def self.find(id)
+    new_from_lxc(LXC::Container.new(id))
   end
 
   def hostname
@@ -32,6 +29,7 @@ class Container
   end
 
   def start
+    sleep(5)
     # TODO
   end
 
@@ -59,6 +57,7 @@ class Container
 
   def self.new_from_lxc(container)
     new({
+      id: container.name,
       name: container.name,
       state: container.state,
       ip_addresses: container.ip_addresses.any? ? container.ip_addresses.join("\n") : "-"
