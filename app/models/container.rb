@@ -6,6 +6,8 @@ class Container
 
   delegate :start, :stop, :freeze, :unfreeze, :destroy, to: :lxc_container
 
+  STATES = [:stopped, :frozen, :running]
+
   class << self
 
     def all
@@ -13,7 +15,7 @@ class Container
     end
 
     def by_state
-      container_list.sort_by { |item| [item.state, item.name] }
+      container_list.sort_by { |item| [STATES.index(item.state), item.name] }
     end
 
     def by_name
