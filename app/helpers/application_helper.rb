@@ -14,6 +14,12 @@ module ApplicationHelper
     content_tag :span, container.state, class: "label label-#{state_class(container.state)}"
   end
 
+  def memory_label(memory_usage)
+    content_tag :span, class: 'label label-default' do
+      number_to_human_size memory_usage
+    end
+  end
+
   def action_button(action, container)
     link_to send("#{action}_container_path", container.id), class: "btn btn-xs btn-#{action_class(action)}" + (disabled?(action, container.state) ? " disabled" : ""), method: action_method(action) do
       content_tag(:span, '', class: "glyphicon glyphicon-#{action_icon(action)}") + " #{action.capitalize}"

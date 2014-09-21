@@ -41,12 +41,21 @@ class Container
 
   end
 
+  def pid
+    lxc_container.init_pid.to_i if running?
+  end
+
   def hostname
-    "todo"
+    "-"
   end
 
   def memory_usage
-    "todo"
+    return GetProcessMem.new(pid).bytes
+    0
+  end
+
+  def running?
+    state == :running
   end
 
   def frozen?
