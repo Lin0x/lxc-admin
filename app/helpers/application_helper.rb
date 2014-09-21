@@ -21,7 +21,7 @@ module ApplicationHelper
   end
 
   def action_button(action, container)
-    link_to send("#{action}_container_path", container.id), class: "btn btn-xs btn-#{action_class(action)}" + (disabled?(action, container.state) ? " disabled" : ""), method: action_method(action) do
+    link_to send("#{action}_container_path", container.id), class: "action-button btn btn-xs btn-#{action_class(action)}" + (disabled?(action, container.state) ? " disabled" : ""), method: action_method(action) do
       content_tag(:span, '', class: "glyphicon glyphicon-#{action_icon(action)}") + " #{action.capitalize}"
     end
   end
