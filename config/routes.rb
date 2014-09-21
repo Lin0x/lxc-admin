@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   patch 'containers/:id/freeze',   to: 'containers#freeze',   as: :freeze_container
   patch 'containers/:id/unfreeze', to: 'containers#unfreeze', as: :unfreeze_container
 
-  delete 'containers/:id', to: 'containers#delete', as: :delete_container
+  delete 'containers/:id', to: 'containers#destroy', as: :destroy_container
 
 end

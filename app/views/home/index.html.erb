@@ -40,7 +40,7 @@
         <%= container.hostname %>
       </td>
       <td>
-        <%= simple_format container.ip_addresses %>
+        <%= simple_format container.ip_addresses, {}, wrapper_tag: :span %>
       </td>
       <td>
         <span class="label label-default">
@@ -51,8 +51,12 @@
         <div class="btn-group">
           <%= action_button :start, container %>
           <%= action_button :stop, container %>
-          <%= action_button :freeze, container %>
-          <%= action_button :delete, container %>
+          <% if container.frozen? %>
+            <%= action_button :unfreeze, container %>
+          <% else %>
+            <%= action_button :freeze, container %>
+          <% end %>
+          <%= action_button :destroy, container %>
         </div>
       </td>
     <% end %>

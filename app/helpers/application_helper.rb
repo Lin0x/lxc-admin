@@ -24,11 +24,11 @@ module ApplicationHelper
 
   def disabled?(action, state)
     disabled = false
-    disabled = true if action == :start    && [:running, :frozen].include?(state)
-    disabled = true if action == :stop     && [:stopped, :frozen].include?(state)
-    disabled = true if action == :freeze   && [:stopped, :frozen].include?(state)
-    disabled = true if action == :unfreeze && [:stopped, :frozen].include?(state)
-    disabled = true if action == :delete   && [:running, :frozen].include?(state)
+    disabled = true if action == :start    && [:running, :frozen ].include?(state)
+    disabled = true if action == :stop     && [:stopped, :frozen ].include?(state)
+    disabled = true if action == :freeze   && [:stopped, :frozen ].include?(state)
+    disabled = true if action == :unfreeze && [:running, :stopped].include?(state)
+    disabled = true if action == :destroy  && [:running, :frozen ].include?(state)
     disabled
   end
 
@@ -41,7 +41,7 @@ module ApplicationHelper
   end
 
   def action_class(action)
-    { delete: 'danger' }.fetch(action, 'default')
+    { destroy: 'danger' }.fetch(action, 'default')
   end
 
   def action_icon(action)
@@ -50,12 +50,12 @@ module ApplicationHelper
       stop:      'stop',
       freeze:    'pause',
       unfreeze:  'step-forward',
-      delete:    'trash'
+      destroy:   'trash'
     }.fetch(action, '')
   end
 
   def action_method(action)
-    { delete: :destroy }.fetch(action, :patch)
+    { destroy: :delete }.fetch(action, :patch)
   end
 
 end

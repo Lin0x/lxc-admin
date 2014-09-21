@@ -20,9 +20,9 @@ class ContainersController < ApplicationController
     redirect_to root_path, notice: 'The container has been unfrozen'
   end
 
-  def delete
-    ContainerStateChangeJob.perform_later container, 'delete'
-    redirect_to root_path, notice: 'The container has been deleted'
+  def destroy
+    ContainerStateChangeJob.perform_later container, 'destroy'
+    redirect_to root_path, notice: 'The container has been destroyed'
   end
 
   private
