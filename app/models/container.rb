@@ -54,20 +54,25 @@ class Container
   end
 
   def hostname
+    return File.readlines(hostname_file).first if File.exists?(hostname_file)
     "-"
   end
 
   def memory_usage
-    return GetProcessMem.new(pid).bytes
+    return GetProcessMem.new(pid).bytes if running?
     0
   end
 
   def config_file_path
-    [lxc_container.config_path, id, 'config'].join('/')
+    [lxc_container.config_path, id, 'config'].join(File::SEPARATOR)
   end
 
   def config_file_content
     File.readlines(config_file_path).join
+  end
+
+  def rootfs_path
+    lxc_container.config_item('lxc.rootfs')
   end
 
   def running?
@@ -86,6 +91,10 @@ class Container
 
   def lxc_container
     @_lxc_container ||= LXC::Container.new(id)
+  end
+
+  def hostname_file
+    [rootfs_path, 'etc', 'hostname'].join(File::SEPARATOR)
   end
 
 end
