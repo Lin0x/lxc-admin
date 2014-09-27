@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/lxc/ruby-lxc.git
-  revision: 6024d0e40beb8d12aa16a6f916a7e66b9127cceb
+  revision: 9bbf0444a759456ddc83d9db1a8d7cc88d60ebe5
   specs:
     ruby-lxc (1.2.0)
 

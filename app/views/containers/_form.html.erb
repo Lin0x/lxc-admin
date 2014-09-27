@@ -1,7 +1,7 @@
 <%= simple_form_for @container do |f| %>
 
   <%= f.input :name %>
-  <%= f.input :template %>
+  <%= f.input :template, as: :template %>
   <%= f.input :rootfs %>
   <%= f.input :autostart, as: :boolean %>
 

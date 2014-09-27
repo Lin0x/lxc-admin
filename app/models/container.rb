@@ -45,8 +45,9 @@ class Container
 
   def initialize(*args)
     super
-    @name   ||= 'foo'
-    @rootfs ||= '/var/lib/lxc/foo/rootfs'
+    @name     ||= random_name
+    @rootfs   ||= [global_path, random_name, 'rootfs'].join(File::SEPARATOR)
+    @template ||= Template::DEFAULT.name
   end
 
   def pid
@@ -95,6 +96,14 @@ class Container
 
   def hostname_file
     [rootfs_path, 'etc', 'hostname'].join(File::SEPARATOR)
+  end
+
+  def global_path
+    LXC.global_config_item('lxc.lxcpath')
+  end
+
+  def random_name
+    @_random_name ||= "lxc-#{Time.now.to_i}"
   end
 
 end
