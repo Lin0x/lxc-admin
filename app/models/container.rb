@@ -70,6 +70,10 @@ class Container
     state == :frozen
   end
 
+  def create
+    lxc_container.create(template)
+  end
+
   private
 
   def lxc_container

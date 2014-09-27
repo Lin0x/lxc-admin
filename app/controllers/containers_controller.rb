@@ -4,6 +4,11 @@ class ContainersController < ApplicationController
     @container = Container.new
   end
 
+  def create
+    ContainerCreateJob.perform_later params[:container][:name], params[:container][:template]
+    redirect_to root_path, notice: 'The container will be created'
+  end
+
   def start
     ContainerStateChangeJob.perform_later container, 'start'
     redirect_to root_path, notice: 'The container has been started'

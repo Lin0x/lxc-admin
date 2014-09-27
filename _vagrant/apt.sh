@@ -17,5 +17,6 @@ apt-get install -y lxc lxc-dev
 #apt-get install -y bridge-utils libvirt-bin debootstrap
 
 apt-get install -y nodejs
+apt-get install -y redis-server
 
 exit 0
