@@ -1,0 +1,57 @@
+<h1 class="page-header">Container &laquo;<%= container.name %>&raquo;</h1>
+
+<h2 class="sub-header">General</h2>
+
+<table class="table">
+  <colgroup>
+    <col width="120" />
+    <col />
+  </colgroup>
+  <tr>
+    <th>
+      Name
+    </th>
+    <td>
+      <%= container.name %>
+    </td>
+  </tr>
+  <tr>
+    <th>
+      Status
+    </th>
+    <td>
+      <%= state_label container %>
+    </td>
+  </tr>
+  <tr>
+    <th>
+      Memory usage
+    </th>
+    <td>
+      <%= memory_label container.memory_usage %>
+    </td>
+  </tr>
+  <tr>
+    <th>
+      Hostname
+    </th>
+    <td>
+      <%= container.hostname %>
+    </td>
+  </tr>
+  <tr>
+    <th>
+      IP-Addresses
+    </th>
+    <td>
+      <%= simple_format container.ip_addresses, {}, wrapper_tag: :span %>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2"></td>
+  </tr>
+</table>
+
+<h2 class="sub-header">Config file &laquo;<%= container.config_file_path %>&raquo;</h2>
+
+<pre><%= container.config_file_content %></pre>

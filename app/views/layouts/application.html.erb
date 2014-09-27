@@ -10,7 +10,7 @@
   <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container-fluid">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="/">
           <span class="glyphicon glyphicon-hdd" style="margin-right: 5px;"></span>
           <%= project_name %>
         </a>
@@ -28,7 +28,7 @@
         <ul class="nav nav-sidebar">
           <li class="nav-header">Containers</li>
           <% Container.by_name.each do |container| %>
-            <li><a href="#"><%= container.name %></a></li>
+            <li><%= link_to container.name, container_path(id: container.id) %></li>
           <% end %>
         </li>
       </div>

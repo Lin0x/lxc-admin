@@ -62,6 +62,14 @@ class Container
     0
   end
 
+  def config_file_path
+    [lxc_container.config_path, id, 'config'].join('/')
+  end
+
+  def config_file_content
+    File.readlines(config_file_path).join
+  end
+
   def running?
     state == :running
   end

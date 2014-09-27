@@ -1,5 +1,7 @@
 class ContainersController < ApplicationController
 
+  helper_method :container
+
   def new
     @container = Container.new
   end
