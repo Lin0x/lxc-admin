@@ -13,4 +13,8 @@ module HostSystem
     RUBY_PLATFORM
   end
 
+  def lxc_version
+    LXC.version
+  end
+
 end
