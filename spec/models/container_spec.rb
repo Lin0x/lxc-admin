@@ -7,6 +7,10 @@ describe Container do
       %w(foo3 foo1 foo2)
     end
 
+    def self.global_config_item(*args)
+      'anything'
+    end
+
     class Container
       def self.new(name)
         case name.to_s
@@ -26,7 +30,7 @@ describe Container do
 
   describe '.by_status' do
     it 'returns all containers sorted by their state' do
-      expect(Container.by_state.map(&:name)).to eq %w(foo1 foo3 foo2)
+      expect(Container.by_state.map(&:name)).to eq %w(foo2 foo1 foo3)
     end
   end
 
