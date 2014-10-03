@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/lxc/ruby-lxc.git
+  revision: 9bbf0444a759456ddc83d9db1a8d7cc88d60ebe5
+  specs:
+    ruby-lxc (1.2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -183,6 +189,7 @@ DEPENDENCIES
   jquery-rails
   rails (= 4.2.0.beta2)
   rspec-rails (~> 3.0.0)
+  ruby-lxc!
   sass-rails (~> 5.0.0.beta1)
   sidekiq
   simple_form (~> 3.1.0.rc2)

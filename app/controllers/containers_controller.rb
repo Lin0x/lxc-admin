@@ -2,6 +2,11 @@ class ContainersController < ApplicationController
 
   helper_method :container
 
+  def index
+    @containers = Container.by_state
+    render layout: false
+  end
+
   def new
     @container = Container.new
   end
