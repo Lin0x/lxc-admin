@@ -15,4 +15,7 @@ Rails.application.routes.draw do
   get    'containers/:id', to: 'containers#show', as: :container
   delete 'containers/:id', to: 'containers#destroy', as: :destroy_container
 
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
+
 end

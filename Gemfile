@@ -27,3 +27,4 @@ gem 'ruby-lxc', github: 'lxc/ruby-lxc', require: 'lxc' unless RUBY_PLATFORM =~ /
 gem 'get_process_mem'
 
 gem 'sidekiq'
+gem 'sinatra', require: false # for sidekiq web ui
