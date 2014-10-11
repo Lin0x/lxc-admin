@@ -24,7 +24,7 @@ group :development, :test do
 end
 
 gem 'ruby-lxc', github: 'lxc/ruby-lxc', require: 'lxc' unless RUBY_PLATFORM =~ /darwin|win32/
-gem 'get_process_mem'
+gem 'linux_proc_mem'
 
 gem 'sidekiq'
 gem 'sinatra', require: false # for sidekiq web ui

@@ -60,7 +60,7 @@ class Container
   end
 
   def memory_usage
-    return GetProcessMem.new(pid).bytes if running?
+    return LinuxProcMem.get_bytes(pid) if running?
     0
   end
 
