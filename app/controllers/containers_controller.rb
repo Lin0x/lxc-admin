@@ -18,27 +18,27 @@ class ContainersController < ApplicationController
 
   def start
     ContainerStateChangeJob.perform_later container, 'start'
-    redirect_to root_path, notice: 'The container has been started'
+    redirect_to root_path, notice: 'The container will be started'
   end
 
   def stop
     ContainerStateChangeJob.perform_later container, 'stop'
-    redirect_to root_path, notice: 'The container has been stopped'
+    redirect_to root_path, notice: 'The container will be stopped'
   end
 
   def freeze
     ContainerStateChangeJob.perform_later container, 'freeze'
-    redirect_to root_path, notice: 'The container has been frozen'
+    redirect_to root_path, notice: 'The container will be frozen'
   end
 
   def unfreeze
     ContainerStateChangeJob.perform_later container, 'unfreeze'
-    redirect_to root_path, notice: 'The container has been unfrozen'
+    redirect_to root_path, notice: 'The container will be unfrozen'
   end
 
   def destroy
     ContainerStateChangeJob.perform_later container, 'destroy'
-    redirect_to root_path, notice: 'The container has been destroyed'
+    redirect_to root_path, notice: 'The container will be destroyed'
   end
 
   private
