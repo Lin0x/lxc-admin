@@ -9,7 +9,7 @@ gem 'bootstrap-sass', '~> 3.2.0'
 gem 'simple_form', '~> 3.1.0.rc2'
 
 gem 'jquery-rails'
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails', '~> 4.1.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'turbolinks'
 
@@ -20,7 +20,7 @@ end
 
 group :development, :test do
   gem 'byebug'
-  gem 'rspec-rails', '~> 3.0.0'
+  gem 'rspec-rails', '~> 3.1.0'
 end
 
 gem 'ruby-lxc', github: 'lxc/ruby-lxc', require: 'lxc' unless RUBY_PLATFORM =~ /darwin|win32/
