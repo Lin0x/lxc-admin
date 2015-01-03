@@ -1,6 +1,13 @@
 class Container < Resource
   include GlobalID::Identification
 
+  schema do
+    attribute :name,      :string
+    attribute :template,  :string
+    attribute :rootfs,    :string
+    attribute :autostart, :boolean
+  end
+
   class << self
 
     def by_state
