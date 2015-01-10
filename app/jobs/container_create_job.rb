@@ -6,7 +6,7 @@ class ContainerCreateJob < ActiveJob::Base
       id: name,
       name: name,
       template: template
-    }).create
+    }).save
   rescue => e
     # TODO: we need to suppress the error to prevent from retries but it should be reported somehow.
     puts "[ERROR] #{e.inspect}"
