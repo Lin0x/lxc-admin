@@ -8,7 +8,7 @@ class ContainersController < ApplicationController
   end
 
   def new
-    @container = Container.new
+    @container = Container.new_with_defaults
   end
 
   def create

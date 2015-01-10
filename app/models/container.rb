@@ -10,12 +10,26 @@ class Container < Resource
 
   class << self
 
+    def new_with_defaults
+      new(name: generated_name, rootfs: [lxc_path, generated_name].join('/'))
+    end
+
     def by_state
       all(params: { sort: :state })
     end
 
     def by_name
       all(params: { sort: :name })
+    end
+
+    private
+
+    def lxc_path
+      GlobalConfigItem.find_by_key('lxc.lxcpath').value
+    end
+
+    def generated_name
+      "lxc-#{Time.now.to_i}"
     end
 
   end
